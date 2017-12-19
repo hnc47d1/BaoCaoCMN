@@ -1,0 +1,50 @@
+
+<html>
+<head>
+
+    <link href="/stylesheets/404.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var time = 3; // Thời gian đếm ngược
+        var page = "/upload"; // Trang bạn muốn chuyển đến
+        function countDown(){
+            time--;
+            gett("timecount").innerHTML = time;
+            if(time == 0){
+                window.location = page;
+            }
+        }
+        function gett(id){
+            if(document.getElementById) return document.getElementById(id);
+            if(document.all) return document.all.id;
+            if(document.layers) return document.layers.id;
+            if(window.opera) return window.opera.id;
+        }
+        function init(){
+            if(gett('timecount')){
+                setInterval(countDown, 1000);
+                gett("timecount").innerHTML = time;
+            }
+            else{
+                setTimeout(init, 50);
+            }
+        }
+        document.onload = init();
+    </SCRIPT>
+</head>
+<body>
+<div class="wrapper row2">
+    <div id="container" class="clear">
+        <section id="fof" class="clear">
+            <div class="hgroup">
+                <h1><span><strong>Uploaded!</strong></span></h1>
+                <h2>Thành công </h2>
+            </div>
+            <p><a href="javascript:history.go(-1)">&laquo; Go Back</a> / <a href="/upload">Go Home &raquo;</a></p>
+            <p>Trang sẽ tự chuyển sau <span id="timecount"></span> giây!</p>
+        </section>
+    </div>
+</div>
+</body>
+</html>

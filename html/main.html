@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="authour" content="Nguyen Minh Trung">
+    <title>FastSharet - File</title>
+    <!--otstrap -->
+	<link href="/stylesheets/bootstrap.css" rel="stylesheet">
+	<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/cssc.css">
+	
+	
+	<!--Custom -->
+	<link href="/stylesheets/lightbox.css" rel="stylesheet">
+	<link href="/stylesheets/style.css" rel="stylesheet">
+	<link href="/stylesheets/droplist.css" rel="stylesheet" type="text/css">
+	
+	
+</head>
+   
+  <body >
+ <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="uploadLabel">Please choose a file</h4>
+      </div>
+      <div class="modal-body">
+
+        <form action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+         
+         <a class="file-input-wrapper btn btn-default  upload-file btn"><span>Search for the files to add</span><input type="file" title="Search for the files to add" class="upload-file btn" name="file[]" multiple></a> <br>
+         <input type="submit" class="btn btn-primary upload-button" value="Upload" name="upload-form">
+
+         </form>
+
+     </div>
+      
+    </div>
+  </div>
+</div>
+
+   <div class="modal fade" id="sharingModal" tabindex="-1" role="dialog" aria-labelledby="sharingLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="">Sharing Link:</h4>
+      </div>
+      <div class="modal-body">
+         
+         <input type="text" value="" class="sharing-input" onclick="this.select();">
+        
+
+     </div>
+      
+    </div>
+  </div>
+</div>
+	
+<div class="modal fade" id="newbucketModal" tabindex="-1" role="dialog" aria-labelledby="newbucketLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="newbucketLabel">Create a new bucket</h4>
+      </div>
+      <div class="modal-body">
+
+        <form action="" method="POST" autocomplete="off">
+         
+                            <div class="form-group">
+                                
+                                <input type="text" name="bucket_name" class="form-control" placeholder="Bucket Name" style="text-align: center;">
+                              </div>
+
+                              <div class="form-group">
+                                <input type="submit" name="bucket_new" class="form-control btm btn-info" value="Save">
+                              </div>
+        
+
+         </form>
+
+     </div>
+      
+    </div>
+  </div>
+</div>	
+  
+  <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#menu-toggle" id="menu-toggle"><img src="/images/menu-toggle.png"></a>
+                </li>
+                
+                <li class="">
+                    <a href="#"><img src="/images/photos.png" class="menu-img">Photos</a>
+                </li>
+
+                <li class="">
+                    <a href="/file"><img src="/images/files.png" class="menu-img">Files</a>
+                </li>
+                <li class="">
+                    <a href="#"><img src="/images/sharing.png" class="menu-img">Videos</a>
+                </li>
+                <li class="">
+                    <a href="/upload"><img src="/images/upload.png" class="menu-img">Upload</a>
+                </li>
+
+
+               
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+              <div class="row">
+                
+                <form action="" method="GET" class="col-md-12 search">
+                     
+                     <input type="text" name="search" placeholder="Search the files and hit enter...">
+
+                </form>
+
+              </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Files</h3>
+                      
+                    </div>
+
+                    <div class="col-md-6">
+                       
+                        <div class="dropdown">
+					<button onclick="myFunction()" class="dropbtn">Account</button>
+  					<div id="myDropdown" class="dropdown-content">
+                        <a href="/register">Register</a>
+                        <a href="/login">Logout</a>
+  					</div>
+                       
+						</div>
+                    </div>
+                </div>
+           
+                           <div class="row tools-row">
+                     
+                     <div class="tools col-md-6">
+                        
+                     <ul>
+                        <li><a href="#" data-toggle="tooltip modal" data-target="#uploadModal" title="" data-original-title="upload files"><img src="../images/newfile.png"></a></li>
+                        <li><a href="#" id="deletemultiple-button" data-toggle="tooltip" title="" data-original-title="delete files"><img src="../images/deletefile.png"></a></li>
+                     </ul>
+
+                     </div>
+
+                     <div class="sort col-md-6 right">
+                     
+                       <ul>
+                        <li class="sort-btn" id="sort-name"><a href="">Name</a></li>
+                        <li class="sort-btn" id="sort-size"><a href="">Size</a></li>
+                        <li class="sort-btn" id="sort-date"><a href="">Modified</a></li>
+
+                      </ul>
+
+                     </div>
+
+                </div>           
+           <form action="files" id="deletemultiple" method="POST"> 
+                <div class="row files">
+            
+                   
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Name</th>
+                                <th>Last Modified</th>
+                                <th>Size</th>
+                                <th>Actions</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody class="files-sort-append">                                  
+                        </tbody>
+                    </table>   
+                </div>
+                 <input type="submit" name="delete-form" id="delete-submit-button" style="display: none;">  
+               </form>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+  
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/bootstrap.min.js"></script>
+  <script src="js/bootstrap.file-input.js"></script>
+  <script src="javascripts/scripts.js"></script>
+  <script type="text/javascript">
+
+        $( ".sort-btn" ).click(function(e) {
+          
+          var activebtn = $(this);
+          var mode = $(this).attr('id');
+          e.preventDefault();
+          
+       $( ".files-sort-append" ).toggle( "slow", function() {
+         
+         
+            $('.file-sort').sort(function (a, b) {
+            
+            if (mode == 'sort-size') {
+             
+             return $(a).data('size') > $(b).data('size') ? 1 : -1;  
+
+            }
+
+            else if (mode == 'sort-name') {
+
+              return ($(b).text()) < ($(a).text()) ? 1 : -1; 
+
+            }
+
+            else if (mode == 'sort-date') {
+
+             return $(a).data('date') > $(b).data('date') ? 1 : -1;
+
+            }
+
+                    
+
+        }).appendTo('.files-sort-append');
+         
+
+
+         });
+          
+          
+          $( ".files-sort-append" ).toggle( "slow");
+          $( ".sort-btn" ).removeClass( "active" );
+          activebtn.addClass( "active" );
+
+        });
+
+      $( document ).ready(function() {
+         
+         $( "#deletemultiple-button" ).click(function(event) {
+            
+            event.preventDefault();
+            $( "#delete-submit-button" ).click();
+          });
+
+     });
+
+     
+    </script>
+    <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+  
+  </body>
+</html>

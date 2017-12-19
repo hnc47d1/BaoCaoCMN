@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="authour" content="Nguyen Minh Trung">
+    <title>FastSharet - Upload </title>
+    <!--otstrap -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet" type="text/css" >
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/cssc.css" rel="stylesheet" type="text/css">
+
+
+
+
+    <!--Custom -->
+    <link href="/stylesheets/lightbox.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/droplist.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/fileupload.css" rel="stylesheet" type="text/css">
+
+
+    <link href="../assert/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../assert/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!--<link href="../assert/css/animate.css" rel="stylesheet">-->
+
+    <link href="../assert/css/jasny-bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body >
+
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#menu-toggle" id="menu-toggle"><img src="/images/menu-toggle.png"></a>
+            </li>
+
+            <li class="">
+                <a href="#photos"><img src="/images/photos.png" class="menu-img">Photos</a>
+            </li>
+
+            <li class="">
+                <a href="/file"><img src="/images/files.png" class="menu-img">Files</a>
+            </li>
+            <li class="">
+                <a href="#videos"><img src="/images/sharing.png" class="menu-img">Videos</a>
+            </li>
+            <li class="">
+                 <a href="/upload"><img src="/images/upload.png" class="menu-img" >Upload</a>
+            </li>
+
+
+
+
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <form action="" method="GET" class="col-md-12 search">
+                    <input type="text" name="search" placeholder="Search the files and hit enter...">
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Files Upload</h3>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">Account</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="/register">Register</a>
+                            <a href="/login">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+
+                    <div class="row">
+                        <div class="full-width bg-transparent">
+                            <h1 class="text-center color">Choose Input file Upload</h1>
+                            <form action="/upload" method="post" enctype="multipart/form-data">
+                                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12">
+                                    <div class="full-width">
+                                        <input type="file" id="base-input" class="form-control form-input form-style-base" name="upl" >
+                                        <input type="text" id="fake-input" class="form-control form-input form-style-fake" placeholder="Choose your File" readonly >
+                                        <span class="glyphicon glyphicon-open input-place"></span>
+                                    </div>
+                                    <!-- /#page-content-wrapper -->
+                                </div>
+                                <input class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12 btn btn-primary inupload-btn"
+                                       type="submit" value="Upload"  >
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/javascripts/jquery-1.11.3.min.js"></script>
+<script src="/javascripts/jquery.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<!--Upload buton-->
+
+<script>
+    $('input[id=base-input]').change(function() {
+        $('#fake-input').val($(this).val().replace("C:\\fakepath\\", ""));
+    });
+    //    =================================== ends here ============================================ //
+
+    var checkme = document.getElementById('checker');
+    var userImage = document.getElementById('image-input');
+    var userName = document.getElementById('name');
+    var userPhone = document.getElementById('phone');
+    var userEmail = document.getElementById('email');
+    var userPlace = document.getElementById('place');
+    var UserSend = document.getElementById('submit');
+    var editPic = document.getElementById('PicUpload');
+    checkme.onchange = function() {
+        UserSend.disabled = !this.checked;
+        userImage.disabled = !this.checked;
+        userName.disabled = !this.checked;
+        userPhone.disabled = !this.checked;
+        userEmail.disabled = !this.checked;
+        userPlace.disabled = !this.checked;
+        editPic.style.display = this.checked ? 'block' : 'none';
+    };
+</script>
+
+
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
