@@ -1,6 +1,6 @@
 var aws = require("aws-sdk");
 
-aws.config.loadFromPath('../tsconfig.json');
+aws.config.loadFromPath('/home/ubuntu/BaoCaoCMN/tsconfig.json');
 
 exports.updateItem = function(params){
     var dynamodb = new aws.DynamoDB();
