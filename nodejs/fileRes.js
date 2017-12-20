@@ -2,7 +2,7 @@ var aws = require("aws-sdk");
 var bucket = require('./bucKet');
 var db = require('./dbRes');
 var diacritics = require('diacritic');
-aws.config.loadFromPath('../tsconfig.json');
+aws.config.loadFromPath('/home/ubuntu/BaoCaoCMN/tsconfig.json');
 
 exports.addfile = function (fields, fileTitle, files, callback) {
     //*************s3
