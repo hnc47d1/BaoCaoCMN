@@ -3,7 +3,7 @@ var fs = require('fs');
 var diacritics = require('diacritic');
 
 
-aws.config.loadFromPath('../tsconfig.json');
+aws.config.loadFromPath('/home/ubuntu/BaoCaoCMN/tsconfig.json');
 
 var s3 = new aws.S3();
 
