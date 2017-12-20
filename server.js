@@ -7,7 +7,7 @@ var AWS = require("aws-sdk"),
     multer = require('multer'),
     multerS3 = require('multer-s3'),
     app = express();
-AWS.config.loadFromPath('./tsconfig.json');
+AWS.config.loadFromPath('/home/ubuntu/BaoCaoCMN/tsconfig.json');
 
 
 
