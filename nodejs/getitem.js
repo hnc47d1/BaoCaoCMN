@@ -1,5 +1,5 @@
 var AWS = require("aws-sdk");
-AWS.config.loadFromPath('./tsconfig.json');
+AWS.config.loadFromPath('/home/ubuntu/BaoCaoCMN/tsconfig.json');
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 
